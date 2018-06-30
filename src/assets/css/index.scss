@@ -1,0 +1,93 @@
+$primary-color: #fd9a35;
+
+.downwardShow{
+	animation:downwardShow 1s ease;
+}
+.downwardShow-1{
+	animation:downwardShow 1s ease .1s;
+}
+.downwardShow-2{
+	animation:downwardShow 1s ease .2s;
+}
+.downwardShow-3{
+	animation:downwardShow 1s ease .3s;
+}
+.downwardShow-4{
+	animation:downwardShow 1s ease .4s;
+}
+.downwardShow-5{
+	animation:downwardShow 1s ease .5s;
+}
+
+.upwardShow{
+	animation:upwardShow 1s ease;
+}
+.upwardShow-1{
+	animation:upwardShow 1s ease .1s;
+}
+.upwardShow-2{
+	animation:upwardShow 1s ease .2s;
+}
+.upwardShow-3{
+	animation:upwardShow 1s ease .3s;
+}
+.upwardShow-4{
+	animation:upwardShow 1s ease .4s;
+}
+.upwardShow-5{
+	animation:upwardShow 1s ease .5s;
+}
+
+.aleftShow{
+	animation:aleftShow 1s ease;
+}
+.aleftShow-1{
+	animation:aleftShow 1s ease .1s;
+}
+.aleftShow-2{
+	animation:aleftShow 1s ease .2s;
+}
+.aleftShow-3{
+	animation:aleftShow 1s ease .3s;
+}
+.aleftShow-4{
+	animation:aleftShow 1s ease .4s;
+}
+.aleftShow-5{
+	animation:aleftShow 1s ease .5s;
+}
+
+.arightShow{
+	animation:arightShow 1s ease;
+}
+.arightShow-1{
+	animation:arightShow 1s ease .1s;
+}
+.arightShow-2{
+	animation:arightShow 1s ease .2s;
+}
+.arightShow-3{
+	animation:arightShow 1s ease .3s;
+}
+.arightShow-4{
+	animation:arightShow 1s ease .4s;
+}
+.arightShow-5{
+	animation:arightShow 1s ease .5s;
+}
+@keyframes downwardShow {
+	0%   {transform: translateY(-100%);opacity: 0;}
+	100% {transform: translateY(0);opacity: 1!important;}
+}
+@keyframes upwardShow {
+	0%   {transform: translateY(100%);opacity: 0;}
+	100% {transform: translateY(0);opacity: 1!important;}
+}
+@keyframes aleftShow {
+	0%   {transform: translateX(100%);opacity: 0;}
+	100% {transform: translateX(0);opacity: 1!important;}
+}
+@keyframes arightShow {
+	0%   {transform: translateX(-100%);opacity: 0;}
+	100% {transform: translateX(0);opacity: 1!important;}
+}
