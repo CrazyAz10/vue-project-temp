@@ -1,20 +1,20 @@
-README：
-==========
-######项目说明
+# README：
+
+###### 项目说明
 	该项目并非已完成的项目，而是一个搭建好的模型框架，方便初期开发节省时间，里面有一些静态页面，可以直接删掉
-###项目已有依赖： 
-	除了vue-cli已有的依赖外
-		axios
-		vuex
-		sass
-		vue-social-share	//分享工具
-		md5
-		base64
-		font-awesome
-		element-ui
-		babel-polyfill		//es6转译 兼容ie9+处理
+### 项目已有依赖：   
+	除了vue-cli已有的依赖外  
+		axios  
+		vuex  
+		sass  
+		vue-social-share	//分享工具  
+		md5  
+		base64  
+		font-awesome  
+		element-ui  
+		babel-polyfill		//es6转译 兼容ie9+处理  
 		
-	目录结构说明：
+	目录结构说明：  
 	├─build
 	├─config
 	├─src
