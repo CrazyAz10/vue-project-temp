@@ -14,7 +14,7 @@
 		element-ui  
 		babel-polyfill		//es6转译 兼容ie9+处理  
 		
-	目录结构说明：  
+### 目录结构说明：  
 	├─build
 	├─config
 	├─src
