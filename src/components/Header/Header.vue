@@ -46,7 +46,7 @@
 				<i class="el-icon-arrow-down"></i>
 				<ul class="set">
 					<li class="ps-content"><a href="#">个人中心</a></li>
-					<li class="quit"><a href="javascript:void(0)" @click="logout">退出登录</a></li>
+					<li class="quit"><a href="javascript:void(0)" @click="set_logout({userId: '',userName: '',token: ''})">退出登录</a></li>
 				</ul>
 			</div>
 			<div class="member pullleft" v-else="user.userId">
@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 	export default {
 		name: "Header",
 		props: {},
@@ -152,7 +152,12 @@ import { mapGetters } from 'vuex';
 				//动态获取视窗高度并赋值
 				this.activity.length
 				return {width: this.activity.length*320+'px'}
-			}
+			},
+			...mapMutations({
+				set_user: 'SET_USER',
+				set_alert: 'SET_ALERT',
+				set_logout: 'SET_LOGOUT'
+			})
 		},
 		watch: {
 			//此监听用于监听路由传递的参数变化
@@ -182,7 +187,14 @@ import { mapGetters } from 'vuex';
 		},
 		mounted(){
 			this.navActive = this.$route.path;
-			console.log(this.alert);
+			let user = JSON.parse(this.$Cmn.gc('user_obj'));
+			if(user){
+				this.set_user(user);
+				this.set_alert({show: true,msg: '系统检测，您已登录!'});
+			}else{
+				this.set_user({});
+				this.set_alert({show: false,msg: '你当前未登录!'});
+			}
 		},
 		beforeDestroy(){
 

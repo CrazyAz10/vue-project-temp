@@ -5,25 +5,25 @@
 				<h3 class="login-tt">账号登录</h3>
 				<el-form :model="ulgForm" status-icon :rules="urules" ref="ulgForm">
 				  	<div class="login-input">
-				    	<el-form-item label="" prop="userName">
-					      <el-input
-					      	size="small"
-					      	type="text"
-					        placeholder="用户账号"
-					        v-model="ulgForm.userName"
-					        auto-complete="off"
-					        clearable>
-					      </el-input>
+						<el-form-item label="" prop="userName">
+						  <el-input
+						  	size="small"
+						  	type="text"
+							placeholder="用户账号"
+							v-model="ulgForm.userName"
+							auto-complete="off"
+							clearable>
+						  </el-input>
 					  </el-form-item>
-				      <el-form-item label="" prop="password">
-					      <el-input
-					      	size="small"
-					      	type="password"
-					        placeholder="密码"
-					        v-model="ulgForm.password"
-					        auto-complete="off"
-					        clearable>
-					      </el-input>
+					  <el-form-item label="" prop="password">
+						  <el-input
+						  	size="small"
+						  	type="password"
+							placeholder="密码"
+							v-model="ulgForm.password"
+							auto-complete="off"
+							clearable>
+						  </el-input>
 					  </el-form-item>
 					</div>
 				 	<el-button type="primary" class="submit"  size="small" @click="submitForm('ulgForm')">登录</el-button>
@@ -48,19 +48,21 @@ import { mapMutations } from 'vuex';
 			var phonePxp = /0?(13|14|15|17|18|19)[0-9]{9}/,
 				emailPxp = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
 			var validatePass = (rule, value, callback) => {
-			    if (value === '') {
-			      callback(new Error('请输入手机号或邮箱'));
-			    } else if (value*1) {
-			    	if(!phonePxp.test(value)){
-			    		callback(new Error('手机或邮箱格式错误!'));
-			    	}
-			    } else {
-			    	if(!emailPxp.test(value)){
-			    		callback(new Error('手机或邮箱格式错误!'));
-			    	}else{
-			    		callback();
-			    	}
-			    }
+				if (value === '') {
+				  callback(new Error('请输入手机号或邮箱'));
+				} else if (value*1) {
+					if(!phonePxp.test(value)){
+						callback(new Error('手机或邮箱格式错误!'));
+					}else{
+						callback();
+					}
+				} else {
+					if(!emailPxp.test(value)){
+						callback(new Error('手机或邮箱格式错误!'));
+					}else{
+						callback();
+					}
+				}
 			};
 			return {
 				activeName: "first",
@@ -80,31 +82,35 @@ import { mapMutations } from 'vuex';
 		},
 		methods: {
 			submitForm(formName) {
-		        this.$refs[formName].validate((valid) => {
-		          if (valid) {//valid为true则表单验证通过
-		            	//表单验证通过
-		            	//提交登录表单
-		            	//登录成功后修改store登录状态 
-		            	//this.setUser({userId: '00123',userName: '616766349@qq.com',token: 'sfdsadfwef1wef1w5ef'});
-		          } else {
-		            return false;
-		          }
-		        });
-		    },
-		    handleClick(tab, event) {
-	        
-		    },
-		    getcode() {
-		    	var regular = /0?(13|14|15|17|18|19)[0-9]{9}/;
-		    	if(!regular.test(this.plgForm.phone)){
-		    		this.$message('请输入有效的手机号码');
-		    	}else{
-		    		//手机号有效 开始发送短信验证码
-		    	}
-		    },
-		    ...mapMutations({
-		        setUser: 'SET_USER'
-		    })
+				this.$refs[formName].validate((valid) => {
+				  if (valid) {//valid为true则表单验证通过
+						//表单验证通过
+						//提交登录表单
+						//登录成功后修改store登录状态 
+						//this.setUser({userId: '00123',userName: '616766349@qq.com',token: 'sfdsadfwef1wef1w5ef'});
+						let user = {userId: '00123',userName: this[formName]['userName'],token: 'sfdsadfwef1wef1w5ef'};
+						this.$Cmn.sc('user_obj',JSON.stringify(user),60*60*24*7);
+						this.setUser(user);
+						window.location.href = '/';
+				  } else {
+					return false;
+				  }
+				});
+			},
+			handleClick(tab, event) {
+			
+			},
+			getcode() {
+				var regular = /0?(13|14|15|17|18|19)[0-9]{9}/;
+				if(!regular.test(this.plgForm.phone)){
+					this.$message('请输入有效的手机号码');
+				}else{
+					//手机号有效 开始发送短信验证码
+				}
+			},
+			...mapMutations({
+				setUser: 'SET_USER'
+			})
 		},
 		mounted: function(){
 
@@ -163,15 +169,15 @@ import { mapMutations } from 'vuex';
 				left: 0;
 				width: 100%;
 				line-height: 80px;
-			    font-size: 13px;
-			    color: #666;
-			    background: #FBFBFB;
-			    text-align: center;
-			    border-top: 1px solid #E5E5E5;
-			    a{
-			    	color: #5670BF;
-			    	cursor: pointer;
-			    }
+				font-size: 13px;
+				color: #666;
+				background: #FBFBFB;
+				text-align: center;
+				border-top: 1px solid #E5E5E5;
+				a{
+					color: #5670BF;
+					cursor: pointer;
+				}
 			}
 		}
 	}

@@ -12,7 +12,11 @@ export default {
   name: 'activity',
   data(){
     return {
-      activ: ''
+      activ: '',
+      title: {
+        Invite: '邀请好友，坐享30%交易手续费佣金',
+        Telegram: '加入官方电报群/币用群，掌握最新动态'
+      }
     }
   },
   methods: {
@@ -41,6 +45,7 @@ export default {
   },
   mounted(){
     this.activ = this.$route.query.activ;
+    document.title = this.title[this.activ];
   },
   beforeDestroy(){
 

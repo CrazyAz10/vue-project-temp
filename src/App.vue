@@ -18,6 +18,11 @@ export default {
     Header,
     Footer
   },
+  watch: {
+    $route(){
+      console.log(this.$route.mate);
+    }
+  },
   beforeCreate(){
 
   },

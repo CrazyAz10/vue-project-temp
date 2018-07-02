@@ -10,8 +10,8 @@
     <div class="wrap-box second-chunk">
       <div class="base-box">
         <div class="hint-title">
-          <p class="clearfix" v-if="!user.userId">您还未登录，登录后即可分享好友 <router-link class="pullright" :to="{path: '/register',query: {lor: 'lg'}}">登 录</router-link></p>
-          <p class="clearfix" v-if="!user.userId">即可分享好友 <touer-link class="pullright" :to="{path: '/register',query: {lor: 'lg'}}">分享</touer-link></p>
+          <p class="clearfix" v-if="!user.userId">您还未登录，登录后即可分享好友<router-link class="pullright" :to="{path: '/register',query: {lor: 'lg'}}">登 录</router-link></p>
+          <p class="clearfix" v-if="user.userId">即可分享好友 <router-link class="pullright" to="/">分享</router-link></p>
         </div>
       </div>
     </div>
