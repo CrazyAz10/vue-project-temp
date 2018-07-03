@@ -12,6 +12,7 @@
 		base64  
 		font-awesome  
 		element-ui  
+		vue-awesome-swiper  //swiper 组件
 		babel-polyfill		//es6转译 兼容ie9+处理  
 		
 ### 目录结构说明：  
