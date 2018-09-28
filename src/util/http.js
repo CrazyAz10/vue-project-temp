@@ -4,14 +4,26 @@ import { Message } from 'element-ui';
 axios.defaults.timeout = 5000;
 axios.defaults.baseURL ='';
 
-
+function axios_form_data(data){
+	let ret = '';
+	for (let it in data) {
+		ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+	}
+	return ret
+}
 //http request 拦截器
 axios.interceptors.request.use(
   config => {
     // const token = getCookie('名称');注意使用的时候需要引入cookie方法，推荐js-cookie
-    config.data = JSON.stringify(config.data);
-    config.headers = {
-      'Content-Type':'application/x-www-form-urlencoded'
+    if(!config.headers['Content-Type']||config.headers['Content-Type']!="multipart/form-data"){// 常规传递数据
+      config.data = axios_form_data(config.data);
+      config.headers = {
+        'Content-Type':'application/x-www-form-urlencoded'
+      }
+    }else{//上传图片时
+      config.headers = {
+        'Content-Type': config.headers['Content-Type']
+      }
     }
     // if(token){
     //   config.params = {'token':token}
@@ -70,8 +82,8 @@ export function get(url,params={}){
  * @returns {Promise}
  */
 
- export function post(url,data = {}){
-   return new Promise((resolve,reject) => {
+ export function post(url,data = {},header = {}){
+   return new Promise((resolve,reject,header) => {
      axios.post(url,data)
           .then(response => {
             resolve(response.data);
